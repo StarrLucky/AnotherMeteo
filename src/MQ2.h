@@ -11,7 +11,8 @@
 
 class MQ2 {
 public: 
-	MQ2(int pin);
+	void setPin(int pin);
+	MQ2();
 	float* read(bool print);
 	float readLPG();
 	float readCO();

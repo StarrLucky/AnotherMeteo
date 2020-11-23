@@ -24,7 +24,8 @@
 #define	DHT_ERROR_NO_REPLY	-3			//	Данных нет, датчик не реагирует или отсутствует
 
 class iarduino_DHT{
-	public:		iarduino_DHT(uint8_t);	//	подключение (номер вывода к которому подключён датчик)
+	public:		void setPin(uint8_t);	//	подключение (номер вывода к которому подключён датчик)
+				iarduino_DHT();
 		int8_t	read();					//	возвращает № ошибки
 		float 	hum;					//	значение влажности   в %
 		float	tem;					//	значение температуры в °C

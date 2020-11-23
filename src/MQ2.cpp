@@ -1,9 +1,14 @@
 #include "Arduino.h"
 #include "MQ2.h"
 
-MQ2::MQ2(int pin) {
+void MQ2::setPin(int pin) {
   _pin = pin;
 }
+
+MQ2::MQ2() {
+
+}
+
 void MQ2::begin(){
     Ro = MQCalibration();
     Serial.print("Ro: ");

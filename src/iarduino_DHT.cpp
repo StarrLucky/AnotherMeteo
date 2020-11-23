@@ -1,6 +1,9 @@
 #include "iarduino_DHT.h"																													//
-																																			//
-		iarduino_DHT::iarduino_DHT(uint8_t i){PinDHT=i;}																					//
+			
+			
+		iarduino_DHT::iarduino_DHT() {};
+																																		//
+void	iarduino_DHT::setPin(uint8_t i){PinDHT=i;}																					//
 																																			//	Датчики DHT11 и DHT22 возвращают пакет из 5 байт.
 int8_t	iarduino_DHT::read(){																												//	Первые два байта - влажность, следующие два байта - температура и последний байт - контрольная сумма
 //		Читаем данные на линии SDA:																											//	Датчик DHT22 может измерять отрицателоьные температуры, о чем свидетельствует старший бит старшего байта температуры.
