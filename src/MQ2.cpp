@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "MQ2.h"
+#include <MQ2.h>
 
 void MQ2::setPin(int pin) {
   _pin = pin;

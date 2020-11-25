@@ -4,8 +4,6 @@
 #include <iarduino_DHT.h>
 
 
-
-
 #define DEVICE_DHT11 1
 #define DEVICE_MQ2   2
 
@@ -19,7 +17,6 @@ private:
         if (val < min)  { min = val; }
     }
 
-
 public:
     int type;
     int max, min;
@@ -29,16 +26,14 @@ public:
     void update();
 };
 
-
 device::~device()
 {
 }
 
 device::device(int type, int pin) {
     this->type = type;
-    if (type == DEVICE_DHT11) {
-        sensorDHT11.setPin(pin);
-    }
+    if (type == DEVICE_DHT11)   { sensorDHT11.setPin(pin);   }
+    if (type == DEVICE_MQ2)     { sensorMQ.setPin(pin);      }
 }
 
 void device::update() {
@@ -50,7 +45,8 @@ void device::update() {
         MinMax(sensorDHT11.tem);
         primaryValue = sensorDHT11.tem;
         break;
-    
+    case DEVICE_MQ2:
+        sensorMQ.read(false);
     default:
         break;
     }
