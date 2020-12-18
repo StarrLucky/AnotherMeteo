@@ -41,6 +41,18 @@ float* MQ2::read(bool print){
    return values;
 }
 
+int MQ2::getLPG() {
+  return lpg;
+}
+int MQ2::getSmoke() {
+  return smoke;
+}
+
+int MQ2::getCO() {
+  return co;
+}
+
+
 float MQ2::readLPG(){
     if (millis()<(lastReadTime + 10000) && lpg != 0){
         return lpg;

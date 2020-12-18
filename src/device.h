@@ -21,6 +21,7 @@ public:
     int type;
     int max, min;
     int primaryValue;
+    int secondaryValue;
     device(int type, int pin);
     ~device();
     void update();
@@ -44,9 +45,12 @@ void device::update() {
         sensorDHT11.read();
         MinMax(sensorDHT11.tem);
         primaryValue = sensorDHT11.tem;
+        secondaryValue = sensorDHT11.hum;
         break;
     case DEVICE_MQ2:
-        sensorMQ.read(false);
+        sensorMQ.read(true);
+        primaryValue = sensorMQ.getCO();
+        secondaryValue = sensorMQ.getSmoke();
     default:
         break;
     }

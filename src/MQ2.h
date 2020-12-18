@@ -17,6 +17,10 @@ public:
 	float readLPG();
 	float readCO();
 	float readSmoke();
+	int getLPG();
+	int getSmoke();
+	int getCO();
+
 	void begin();
 private:
 	int _pin;
