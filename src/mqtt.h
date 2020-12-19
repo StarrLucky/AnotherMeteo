@@ -1,5 +1,5 @@
-#ifndef MQTT1_H
-#define MQTT1_H
+#ifndef MQTT_H
+#define MQTT_H
 
 
 #define MQTT_SERVER "broker.hivemq.com"
@@ -8,9 +8,13 @@
 #define mqtt_password "password"
 
 // topics: 
+ #define TOPIC_HUMIDITY        "starrlucky/humidity"
+ #define TOPIC_TEMPERATURE     "starrlucky/temperature"     
+ #define TOPIC_MQ_LPG          "starrlucky/mq_lpg"     
+ #define TOPIC_MQ_SMOKE        "starrlucky/mq_smoke" 
+ #define TOPIC_MQ_CO           "starrlucky/mq_co" 
 
-#define humidity_topic "starrlucky/humidity"
-#define temperature_topic "starrlucky/temperature"      
+
 
 
 

@@ -3,25 +3,14 @@
 #include <wireless.h>
 #include <narodmonitor.h>
 #include <device.h>
-#include <mqtt1.h>
-
-const char* TOPIC_HUMIDITY  = "starrlucky/humidity";
-const char* TOPIC_TEMPERATURE = "starrlucky/temperature";     
-const char* TOPIC_MQ_LPG = "starrlucky/mq_lpg";     
-const char* TOPIC_MQ_SMOKE = "starrlucky/mq_smoke"; 
-const char* TOPIC_MQ_CO = "starrlucky/mq_co"; 
-
-
-
-// "I got the urge to code again"  - THE DEVIL ALL THE TIME,  2020.
-
-// List of supported devices. 
+#include <mqtt.h>
 
 
 // Router APs
-String ssid [] = {"ssid","ssid2"};
-String password [] = {"password", "password"};
+String ssid [] = {"ssid1","ssid2"};
+String password [] = {"password1", "password2"};
 int ssidnum = 2;
+
 // setting devices that will be connected on corresponding pins
 device dht11 = device(DEVICE_DHT11, 5);
 device dht112 = device(DEVICE_DHT11, 4);
@@ -50,23 +39,23 @@ void setup() {
       
       mqttSetup();
 
-      if (diag) { Serial.println("Setup success \n");}
-            
-      
-      
+      if (diag) { Serial.println("Setup success \n");}       
+
       }
+
+
 
 void loop() 
 {
 
-// updating 
+// updating  sensors data
       delay(10000);
       dht11.update();
       dht112.update();
       mq1.update();
 
 
-// Showing in serial:
+// Showing data in serial:
 
       Serial.println("=========");
       Serial.println("Temp1 :" + String(dht11.primaryValue));
@@ -83,17 +72,17 @@ void loop()
       time1= timeNarodmonCnt = millis();
       
       if (time1 > (lastcheck + 10000))
-{
-      RouterAP.WLanControl(RouterAP);        
-      lastcheck = millis();
+      {
+            RouterAP.WLanControl(RouterAP);        
+            lastcheck = millis();
       }
       
 
-//    Sending to NarodMonitor Every 5 min
+//    Sending to NarodMonitor every 5 min
       if (timeNarodmonCnt>timeNarodmonLastCheck+300000) 
       {
-      Serial.println ( SendToNarodmon("14-F6-D8-D8-99-F6", String(dht11.primaryValue)));
-      timeNarodmonLastCheck = millis();
+            Serial.println ( SendToNarodmon("14-F6-D8-D8-99-F6", String(dht11.primaryValue)));
+            timeNarodmonLastCheck = millis();
       }
 
 // sending to MQTT broker
