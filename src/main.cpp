@@ -8,8 +8,8 @@
 bool diag = true;
 
 // Router APs
-String ssid [] = {"StarrLucky","Lan_Indoor"};
-String password [] = {"luckys322", "luckys322"};
+String ssid [] = {"AP1","AP2"};
+String password [] = {"password1", "password2"};
 int ssidnum = 2;
 unsigned long time1 = 0, time2 , lastUIupdate = 9999, lastcheck = 9999, lastcheckNarod = 1000;
 
