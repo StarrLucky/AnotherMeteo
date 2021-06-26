@@ -12,8 +12,8 @@ device dht112 = device(DEVICE_DHT11, 4);
 device mq1 = device(DEVICE_MQ2, A0);
 
 // Router APs
-const char * ssid = "Lan_indoor";
-const char * pass = "luckys322";
+const char * ssid = "AP";
+const char * pass = "password";
 const char * routerIP = "192.168.0.1";
 
 WiFiClient wificlient;                    // wifi client
