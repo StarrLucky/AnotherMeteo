@@ -9,7 +9,7 @@
 String SendToNarodmon(String hostname, String value) { // Собственно формирование пакета и отправка.
     WiFiClient client;
 
-    if (!client.connect("192.168.1.1", 80)) {
+    if (!client.connect("192.168.0.1", 80)) {
         Serial.println("connection failed"); }
     String buf;
     String line;
